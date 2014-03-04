@@ -1,0 +1,15 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <CheckBoxPreference
+        android:key="vibrate_checkbox"
+        android:title="Vibrate"
+        android:summary="Enable device vibration"
+        android:defaultValue="true"/>
+
+    <CheckBoxPreference
+            android:key="audio_checkbox"
+            android:title="Sound"
+            android:summary="Enable device sounds"
+            android:defaultValue="true"/>
+
+</PreferenceScreen>

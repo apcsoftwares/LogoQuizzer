@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<logos xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <id>BMW</id>
+        <imagen>bmw_logo</imagen>
+        <description>Bavarian MotorWorks</description>
+        <value>bmw</value>
+    </item>
+    <item>
+        <id>HONDA</id>
+        <imagen>bmw_logo</imagen>
+        <description>Honda Motor Co.</description>
+        <value>honda</value>
+    </item>
+    <item>
+        <id>MITSUBISHI</id>
+        <imagen>bmw_logo</imagen>
+        <description>Mitsubishi</description>
+        <value>honda</value>
+    </item>
+    <item>
+        <id>SUZUKI</id>
+        <imagen>bmw_logo</imagen>
+        <description>Suzuki</description>
+        <value>honda</value>
+    </item>
+</logos>
