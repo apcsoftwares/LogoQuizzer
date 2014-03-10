@@ -1,5 +1,6 @@
 package com.phobos.logoquizzer;
 
+
 import java.io.Serializable;
 
 /**
@@ -8,18 +9,29 @@ import java.io.Serializable;
 public class Logo implements Serializable
 {
 	private String id;
-	private String imagen;
+	private String fullImage;
+	private String partialImage;
 	private String description;
 	private String value;
+
+	public String getPartialImage()
+	{
+		return partialImage;
+	}
+
+	public void setPartialImage(String partialImage)
+	{
+		this.partialImage = partialImage;
+	}
 
 	public String getId()
 	{
 		return id;
 	}
 
-	public String getImagen()
+	public String getFullImage()
 	{
-		return imagen;
+		return fullImage;
 	}
 
 	public String getDescription()
@@ -37,9 +49,9 @@ public class Logo implements Serializable
 		this.id = id;
 	}
 
-	public void setImagen(String imagen)
+	public void setFullImage(String fullImage)
 	{
-		this.imagen = imagen;
+		this.fullImage = fullImage;
 	}
 
 	public void setDescription(String description)

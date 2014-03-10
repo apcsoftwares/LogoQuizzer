@@ -2,12 +2,10 @@ package com.phobos.logoquizzer;
 
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import java.util.List;
@@ -20,12 +18,12 @@ public class LogoAdapter extends BaseAdapter
 	private Context context;
 	private List<Logo> logoList;
 
-	public LogoAdapter(Context context,List<Logo>logos)
+	public LogoAdapter(Context context, List<Logo> logos)
 	{
-		Log.i("MARTE", "Constructor LogoAdapter");
+		//Log.i("MARTE", "Constructor LogoAdapter");
 		this.context = context;
 		this.logoList = logos;
-		Log.i("MARTE", "Constructor LogoAdapter-Exit");
+		//Log.i("MARTE", "Constructor LogoAdapter-Exit");
 
 	}
 
@@ -59,32 +57,23 @@ public class LogoAdapter extends BaseAdapter
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 
-		//Log.i("MARTE","Test");
 		ViewHolder holder;
 		LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
 
-		//Log.i("MARTE","Test");
-		if (convertView==null)
+		if (convertView == null)
 		{
-
-			convertView = mInflater.inflate(R.layout.item,null);
+			convertView = mInflater.inflate(R.layout.item, null);
 			holder = new ViewHolder();
-			holder.ivImagen = (ImageView) convertView.findViewById(R.id.imageView);
+			holder.ivImagen = (ImageView) convertView.findViewById(R.id.imageHidden);
 			convertView.setTag(holder);
 		}
 		else
 		{
 			holder = (ViewHolder) convertView.getTag();
 		}
-
 		Logo currentLogo = (Logo) this.getItem(position);
-//		Log.i("MARTE", "Imagen:"+ currentLogo.getImagen());
-
-		int res= context.getResources().getIdentifier(currentLogo.getImagen(),"drawable",context.getPackageName());
-//		Log.i("MARTE", "Res:"+ String.valueOf(res));
-		//Log.i("MARTE", "PackageName:"+ context.getPackageName());
-
-
+		//		Log.i("Marte", currentLogo.getPartialImage());
+		int res = context.getResources().getIdentifier(currentLogo.getPartialImage(), "drawable", context.getPackageName());
 		holder.ivImagen.setBackgroundResource(res);
 		holder.ivImagen.setScaleType(ImageView.ScaleType.FIT_XY);
 

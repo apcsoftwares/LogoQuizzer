@@ -1,10 +1,11 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:id="@+id/container"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent"
-             tools:context="com.phobos.logoquizzer.LogoListActivity"
-             tools:ignore="MergeRootFrame">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:id="@+id/container"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#FFFFFF"
+              tools:context="com.phobos.logoquizzer.LogoListActivity"
+              tools:ignore="MergeRootFrame">
 
     <GridView
             android:layout_width="match_parent"
@@ -19,5 +20,5 @@
             android:horizontalSpacing="10dp"
             android:gravity="center"/>
 
-</FrameLayout>
+</LinearLayout>
 

@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<logos xmlns:android="http://schemas.android.com/apk/res/android">
+<logos>
     <item>
-        <id>BMW</id>
-        <imagen>bmw_logo</imagen>
-        <description>Bavarian MotorWorks</description>
-        <value>bmw</value>
+        <id>allianz</id>
+        <fullImage>allianz</fullImage>
+        <partialImage>allianz_partial</partialImage>
+        <description>Allianz</description>
+        <value>allianz</value>
     </item>
     <item>
-        <id>HONDA</id>
-        <imagen>bmw_logo</imagen>
-        <description>Honda Motor Co.</description>
-        <value>honda</value>
+        <id>amd</id>
+        <fullImage>amd</fullImage>
+        <partialImage>amd_partial</partialImage>
+        <description>AMD</description>
+        <value>amd</value>
     </item>
     <item>
-        <id>MITSUBISHI</id>
-        <imagen>bmw_logo</imagen>
-        <description>Mitsubishi</description>
-        <value>honda</value>
-    </item>
-    <item>
-        <id>SUZUKI</id>
-        <imagen>bmw_logo</imagen>
-        <description>Suzuki</description>
-        <value>honda</value>
+        <id>americaneagle</id>
+        <fullImage>american_eagle</fullImage>
+        <partialImage>american_eagle_partial</partialImage>
+        <description>American Eagle</description>
+        <value>american eagle</value>
     </item>
 </logos>
