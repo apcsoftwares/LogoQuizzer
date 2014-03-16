@@ -7,4 +7,10 @@
             android:title="@string/action_settings"
             android:orderInCategory="100"
             android:showAsAction="never"/>
+    <item
+            android:id="@+id/action_resetgame"
+            android:title="@string/reset_game"
+            android:orderInCategory="90"
+            android:showAsAction="never"
+            />
 </menu>

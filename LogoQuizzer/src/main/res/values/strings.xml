@@ -7,9 +7,9 @@
     <string name="btnnewgame">New Game</string>
     <string name="title_activity_logolist">Logo List</string>
     <string name="title_activity_answer">AnswerActivity</string>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
     <string name="CheckButton">Check!</string>
+    <string name="continuegame">Continue Game</string>
+    <string name="btnNewgame">New Game</string>
+    <string name="reset_game">Reset Game</string>
 
 </resources>

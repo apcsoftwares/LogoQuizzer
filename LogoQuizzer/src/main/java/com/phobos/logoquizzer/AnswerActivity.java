@@ -2,6 +2,7 @@ package com.phobos.logoquizzer;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -10,15 +11,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageSwitcher;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 
 public class AnswerActivity extends Activity
 {
 	private int res;
+	private Utils utils;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -30,6 +33,9 @@ public class AnswerActivity extends Activity
 		{
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
+
+		utils = new Utils(this);
+		utils.InitializeSounds();
 
 		final ImageView imageHidden = (ImageView) findViewById(R.id.imageHidden);
 		final ImageView imageFull = (ImageView) findViewById(R.id.imageFull);
@@ -53,28 +59,47 @@ public class AnswerActivity extends Activity
 			{
 				if (event != null && (event.getKeyCode() == KeyEvent.KEYCODE_ENTER))
 				{
-					Toast toast;
+
+					//Toast toast;
 					if (logo.getValue().toLowerCase().equals(editTextResult.getText().toString().toLowerCase()))
 					{
 						//Log.i("MARTE", "Entro");
-						toast = Toast.makeText(getApplicationContext(), "Correcto!", Toast.LENGTH_SHORT);
+						//toast = Toast.makeText(getApplicationContext(), "Correcto!", Toast.LENGTH_SHORT);
 						imageSwitcher.showNext();
 						editTextResult.setEnabled(false);
+
 						getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+						utils.PlaySound(Utils.SoundType.RIGHT_ANSWER);
+
+						//Graba que el logo ya fue descubierto
+						utils.saveLogo(logo.getId());
 					}
 					else
 					{
 						//Log.i("MARTE", "No entro");
-						toast = Toast.makeText(getApplicationContext(), "Mal!", Toast.LENGTH_SHORT);
+						Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
+						imageSwitcher.startAnimation(shake);
+						//toast = Toast.makeText(getApplicationContext(), "Mal!", Toast.LENGTH_SHORT);
+						utils.PlaySound(Utils.SoundType.WRONG_ANSWER);
 					}
-					toast.show();
+					//toast.show();
+					return true;
 				}
-				return true;
+				return false;
 
 			}
 		});
 
+		if (utils.isLogoAnswered(logo.getId()))
+		{
+			editTextResult.setVisibility(View.INVISIBLE);
+			//editTextResult.setText(logo.getId().toUpperCase());
+			//editTextResult.setEnabled(false);
+			imageSwitcher.showNext();
+		}
+
 	}
+
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu)
@@ -94,6 +119,8 @@ public class AnswerActivity extends Activity
 		int id = item.getItemId();
 		if (id == R.id.action_settings)
 		{
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

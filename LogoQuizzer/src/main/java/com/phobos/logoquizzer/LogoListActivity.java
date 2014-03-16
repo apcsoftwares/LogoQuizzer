@@ -32,7 +32,6 @@ public class LogoListActivity extends Activity
 	public static final String DESCRIPTION_TAG = "description";
 	public static final String VALUE_TAG = "value";
 	public static final String PARTIAL_IMAGE_TAG = "partialImage";
-	GridView gridLogos;
 	private XmlPullParser xmlPullParser;
 	//private XmlPullParserFactory xmlPullParserFactory;
 	ArrayList<Logo> logos = null;
@@ -50,13 +49,34 @@ public class LogoListActivity extends Activity
 		//getFragmentManager().findFragmentByTag("YourFragmentTag")
 		//Log.i("Marte", "Findviewbyid:"+String.valueOf(getFragmentManager().findFragmentById(R.layout.fragment_logolist).getView().findViewById(R.id.gridLogos)));
 
-		//Log.i("MARTE",String.valueOf(findViewById(R.id.gridLogos)));
-		//gridLogos = (GridView) getFragmentManager().findFragmentByTag("PlaceholderFragment").getView().findViewById(R.id.gridLogos);
-		initialize();
+		loadXML();
+		initializeViews();
+
+		Utils utils = new Utils(this);
+		utils.savePlayed();
 
 	}
 
-	private void initialize()
+	private void initializeViews()
+	{
+		final GridView gridLogos = (GridView) findViewById(R.id.gridLogos);
+
+		gridLogos.setAdapter(new LogoAdapter(LogoListActivity.this, logos));
+
+		gridLogos.setOnItemClickListener(new AdapterView.OnItemClickListener()
+		{
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				Intent intent = new Intent(parent.getContext(), AnswerActivity.class);
+				intent.putExtra("Logo", logos.get(position));
+				startActivity(intent);
+			}
+		});
+
+	}
+
+	private void loadXML()
 	{
 		try
 		{
@@ -76,25 +96,6 @@ public class LogoListActivity extends Activity
 		{
 			Log.i("MARTE-IO", e.getMessage());
 		}
-
-
-		gridLogos = (GridView) findViewById(R.id.gridLogos);
-		gridLogos.setAdapter(new LogoAdapter(LogoListActivity.this, logos));
-
-
-		gridLogos.setOnItemClickListener(new AdapterView.OnItemClickListener()
-		{
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-			{
-
-				//Log.i("MARTE", "Logo: " + logos.get(position).getDescription());
-				Intent intent = new Intent(parent.getContext(), AnswerActivity.class);
-				intent.putExtra("Logo", logos.get(position));
-				startActivity(intent);
-			}
-		});
-
 	}
 
 	private void parseXML(XmlPullParser parser) throws XmlPullParserException, IOException
@@ -172,6 +173,8 @@ public class LogoListActivity extends Activity
 		int id = item.getItemId();
 		if (id == R.id.action_settings)
 		{
+			Intent intent = new Intent(this, SettingsActivity.class);
+			startActivity(intent);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
