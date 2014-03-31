@@ -33,6 +33,7 @@ public class LogoListActivity extends Activity
 	public static final String VALUE_TAG = "value";
 	public static final String PARTIAL_IMAGE_TAG = "partialImage";
 	private XmlPullParser xmlPullParser;
+	public static final String EXTRA_LOGO = "com.phobos.logoquizzer.LOGO" 
 	//private XmlPullParserFactory xmlPullParserFactory;
 	ArrayList<Logo> logos = null;
 
@@ -69,7 +70,7 @@ public class LogoListActivity extends Activity
 			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
 			{
 				Intent intent = new Intent(parent.getContext(), AnswerActivity.class);
-				intent.putExtra("Logo", logos.get(position));
+				intent.putExtra(EXTRA_LOGO, logos.get(position));
 				startActivity(intent);
 			}
 		});
