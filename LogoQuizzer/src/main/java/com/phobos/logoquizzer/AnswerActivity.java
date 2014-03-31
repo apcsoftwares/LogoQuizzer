@@ -44,7 +44,7 @@ public class AnswerActivity extends Activity
 		final EditText editTextResult = (EditText) findViewById(R.id.editTextResult);
 		//final Button btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
-		final Logo logo = (Logo) getIntent().getSerializableExtra("Logo");
+		final Logo logo = (Logo) getIntent().getSerializableExtra(LogoListActivity.EXTRA_LOGO);
 
 		getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE);
 		res = getResources().getIdentifier(logo.getPartialImage(), "drawable", getPackageName());
